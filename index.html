@@ -2,7 +2,7 @@
 <html lang="cs">
 
 <head>
-    <title>Malování</title>
+    <title>JS Malování</title>
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -15,122 +15,118 @@
 </head>
 
 <body>
-
-    <audio id="myAudio">
-        <source src="horse.ogg" type="audio/ogg">
-        <source src="horse.mp3" type="audio/mpeg">
-        Your browser does not support the audio element.
-    </audio>
-
-    <div style="margin-left: 10px; margin-top: 10px;">
+    <header class="jumbotron">
+        <h1 class="text-center">Maluj o 106!</h1>
+    </header>
+    <div class="container text-center">
         <table>
             <tr>
                 <td>
-                    <div><canvas width="700" height="700" id="canvas" onmousemove="paint(event);"
+                    <div><canvas width="1000" height="500" id="canvas" onmousemove="paint(event);"
                             onmousedown="activate();" onmouseup="deactivate();">
                     </div>
                 </td>
                 <td class="tools">
                     <a href="#" onclick="pen();"><img src="../paint/images/pencil.png" /></a>
                     <a href="#" onclick="eraser();"><img src="../paint/images/eraser.png" /></a>
-                    <button type="button" class="btn btn-primary" style=" margin-top: 10px;"
-                        onclick="clearCanvas()">Nové plátno</button>
-                    <div class="dropdown" style="background-color: white;">
-                        <button style="background-color: white; color:black; margin-top: 10px;"
-                            class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenuButton"
+                    <button type="button" class="btn btn-primary" id="button" onclick="clearCanvas()">Nové
+                        plátno</button>
+                    <div class="dropdown" id="dropdown-name">
+                        <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenuButton"
                             data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             Tloušťka čáry
                         </button>
-                        <div id="dropdown" style="background-color: white;" class="dropdown-menu"
-                            aria-labelledby="dropdownMenuButton">
-                            <div style="width: auto; height: 10px;" onclick="thickness(10);"></div><br>
-                            <div style="width: auto; height: 20px;" onclick="thickness(20);"></div><br>
-                            <div style="width: auto; height: 30px;" onclick="thickness(30);"></div><br>
-                            <div style="width: auto; height: 40px;" onclick="thickness(40);"></div>
+                        <div id="dropdown" class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                            <div style="height: 10px;" onclick="thickness(10);"></div><br>
+                            <div style="height: 20px;" onclick="thickness(20);"></div><br>
+                            <div style="height: 30px;" onclick="thickness(30);"></div><br>
+                            <div style="height: 40px;" onclick="thickness(40);"></div>
                         </div>
                     </div>
                 </td>
             </tr>
         </table>
-        <table>
-            <tr>
-                <td rowspan="2">
-                    <div>
-                        <h4>Vyberte si barvu:</h4>
-                    </div>
-                </td>
-                <td class="colors">
-                    <div style="background-color: #000000" onclick="changeColor(1);"></div>
-                </td>
-                <td class="colors">
-                    <div style="background-color: #7F7F7F" onclick="changeColor(2);"></div>
-                </td>
-                <td class="colors">
-                    <div style="background-color: #880015;" onclick="changeColor(3);"></div>
-                </td>
-                <td class="colors">
-                    <div style="background-color: #ED1C24;" onclick="changeColor(4);"></div>
-                </td>
-                <td class="colors">
-                    <div style="background-color: #FF7F27;" onclick="changeColor(5);"></div>
-                </td>
-                <td class="colors">
-                    <div style="background-color: #FFF200;" onclick="changeColor(6);"></div>
-                </td class="colors">
-                <td class="colors">
-                    <div style="background-color: #22B14C;" onclick="changeColor(7);"></div>
-                </td>
-                <td class="colors">
-                    <div style="background-color: #00A2E8;" onclick="changeColor(8);"></div>
-                </td>
-                <td class="colors">
-                    <div style="background-color: #3F48CC;" onclick="changeColor(9);"></div>
-                </td>
-                <td class="colors">
-                    <div style="background-color: #A349A4;" onclick="changeColor(10);"></div>
-                </td>
-                <td rowspan="2">
-                    <div>
-                        <h4>Edit:</h4>
-                    </div>
-                </td>
-                <td rowspan="2">
-                    <input type="color" id="colorsInput" onchange="changeColor();" />
-                </td>
-            </tr>
-            <tr>
-                <td class="colors">
-                    <div style="background-color: #FFFFFF;" onclick="changeColor(11);"></div>
-                </td>
-                <td class="colors">
-                    <div style="background-color: #C3C3C3;" onclick="changeColor(12);"></div>
-                </td>
-                <td class="colors">
-                    <div style="background-color: #B97A57;" onclick="changeColor(13);"></div>
-                </td>
-                <td class="colors">
-                    <div style="background-color: #FFAEC9;" onclick="changeColor(14);"></div>
-                </td>
-                <td class="colors">
-                    <div style="background-color: #FFC90E;" onclick="changeColor(15);"></div>
-                </td>
-                <td class="colors">
-                    <div style="background-color: #EFE4B0;" onclick="changeColor(16);"></div>
-                </td class="colors">
-                <td class="colors">
-                    <div style="background-color: #B5E61D;" onclick="changeColor(17);"></div>
-                </td>
-                <td class="colors">
-                    <div style="background-color: #99D9EA;" onclick="changeColor(18);"></div>
-                </td>
-                <td class="colors">
-                    <div style="background-color: #7092BE;" onclick="changeColor(19);"></div>
-                </td>
-                <td class="colors">
-                    <div style="background-color: #C8BFE7;" onclick="changeColor(20);"></div>
-                </td>
-            </tr>
-        </table>
+        <div class="container">
+            <table>
+                <tr>
+                    <td rowspan="2">
+                        <div class="container">
+                            <h4>Vyber si barvu:</h4>
+                        </div>
+                    </td>
+                    <td class="colors">
+                        <div style="background-color: #000000" onclick="changeColor(1);"></div>
+                    </td>
+                    <td class="colors">
+                        <div style="background-color: #7F7F7F" onclick="changeColor(2);"></div>
+                    </td>
+                    <td class="colors">
+                        <div style="background-color: #880015;" onclick="changeColor(3);"></div>
+                    </td>
+                    <td class="colors">
+                        <div style="background-color: #ED1C24;" onclick="changeColor(4);"></div>
+                    </td>
+                    <td class="colors">
+                        <div style="background-color: #FF7F27;" onclick="changeColor(5);"></div>
+                    </td>
+                    <td class="colors">
+                        <div style="background-color: #FFF200;" onclick="changeColor(6);"></div>
+                    </td class="colors">
+                    <td class="colors">
+                        <div style="background-color: #22B14C;" onclick="changeColor(7);"></div>
+                    </td>
+                    <td class="colors">
+                        <div style="background-color: #00A2E8;" onclick="changeColor(8);"></div>
+                    </td>
+                    <td class="colors">
+                        <div style="background-color: #3F48CC;" onclick="changeColor(9);"></div>
+                    </td>
+                    <td class="colors">
+                        <div style="background-color: #A349A4;" onclick="changeColor(10);"></div>
+                    </td>
+                    <td rowspan="2">
+                        <div class="container">
+                            <h4>Více barev:</h4>
+                        </div>
+                    </td>
+                    <td rowspan="2">
+                        <input type="color" id="colorsInput" onchange="changeColor();" />
+                    </td>
+                </tr>
+                <tr>
+                    <td class="colors">
+                        <div style="background-color: #FFFFFF;" onclick="changeColor(11);"></div>
+                    </td>
+                    <td class="colors">
+                        <div style="background-color: #C3C3C3;" onclick="changeColor(12);"></div>
+                    </td>
+                    <td class="colors">
+                        <div style="background-color: #B97A57;" onclick="changeColor(13);"></div>
+                    </td>
+                    <td class="colors">
+                        <div style="background-color: #FFAEC9;" onclick="changeColor(14);"></div>
+                    </td>
+                    <td class="colors">
+                        <div style="background-color: #FFC90E;" onclick="changeColor(15);"></div>
+                    </td>
+                    <td class="colors">
+                        <div style="background-color: #EFE4B0;" onclick="changeColor(16);"></div>
+                    </td class="colors">
+                    <td class="colors">
+                        <div style="background-color: #B5E61D;" onclick="changeColor(17);"></div>
+                    </td>
+                    <td class="colors">
+                        <div style="background-color: #99D9EA;" onclick="changeColor(18);"></div>
+                    </td>
+                    <td class="colors">
+                        <div style="background-color: #7092BE;" onclick="changeColor(19);"></div>
+                    </td>
+                    <td class="colors">
+                        <div style="background-color: #C8BFE7;" onclick="changeColor(20);"></div>
+                    </td>
+                </tr>
+            </table>
+        </div>
     </div>
     <footer class="text-center" id="footer">
         <p>©Aleš Lahodný IT2 2020</p>

@@ -1,13 +1,12 @@
 let color = "#FFFFFF"; // zakladni barva bila (nic se nevykresluje)
 let size = 10; // velikost strany ctverce
-let cursorSize = 48; // obrazek ma 48 pixelu
+let sizeOfCursor = 48;
 let painting;
-let sound = document.getElementById("myAudio");
 function paint(event) {
     let canvas = document.getElementById("canvas");
     let ctx = canvas.getContext("2d");
-    let x = event.clientX - size - 10;
-    let y = event.clientY + cursorSize;
+    let x = event.clientX - size - 10 - 395;
+    let y = event.clientY + sizeOfCursor - 220;
     if (painting) {
         ctx.fillStyle = color;
         ctx.fillRect(x, y, size, size);
@@ -25,7 +24,6 @@ function deactivate() {
 function eraser() {
     color = "#FFFFFF"; // barva gumy se nastavi jako bila pro efekt mazani
     document.getElementById("canvas").style.cursor = "url('../paint/images/eraser-cursor.png'), default"; // zmena kursoru
-    document.getElementById("colors").setAttribute("disabled", "");
 }
 
 function pen() {
@@ -109,7 +107,7 @@ function thickness(number) { // nastavi velikost strany na argument funkce
 }
 
 function clearCanvas() { // funkce pro vycisteni canvasu
-    let context = canvas.getContext('2d');
-    context.clearRect(0, 0, canvas.width, canvas.height); // vycisteni canvasu
+    ctx = canvas.getContext('2d');
+    ctx.clearRect(0, 0, canvas.width, canvas.height); // vycisteni canvasu
 }
 

@@ -3,10 +3,6 @@ canvas {
   cursor: url("lapizcursor.gif"), default;
 }
 
-.tools {
-  width: 100px;
-}
-
 .tools div {
   background-color: black;
 }
@@ -35,8 +31,26 @@ canvas {
   height: 50px;
 }
 
+#button {
+  margin-top: 10px;
+}
+
+#dropdown-name {
+  background-color: white;
+}
+
+#dropdownMenuButton {
+  background-color: white;
+  color: black;
+  margin-top: 10px;
+}
+
+#dropdown {
+  background-color: white;
+}
+
 #footer {
   position: absolute;
-  bottom: 30px;
+  bottom: 20px;
   width: 100%;
 }
