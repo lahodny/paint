@@ -1,37 +1,56 @@
+let canvas = document.getElementById("canvas");
+let ctx = canvas.getContext("2d");
 let color = "#FFFFFF"; // zakladni barva bila (nic se nevykresluje)
 let size = 10; // velikost strany ctverce
-let sizeOfCursor = 48;
+let sizeOfCursor = 48; // 48 je velikost obrazku kurzoru
 let painting;
-function paint(event) {
-    let canvas = document.getElementById("canvas");
-    let ctx = canvas.getContext("2d");
-    let x = event.clientX - size - 10 - 395;
+let tool;
+let writing = document.getElementById("writing");
+let erasing = document.getElementById("erasing");
+let pen = document.getElementById('pen');
+let eraser = document.getElementById('eraser');
+let button = document.getElementById('button');
+
+canvas.addEventListener('mousemove', function paint(event) {
+    let x = event.clientX - size - 10 - 395; // pozice zacatku vykreslovani
     let y = event.clientY + sizeOfCursor - 220;
     if (painting) {
         ctx.fillStyle = color;
-        ctx.fillRect(x, y, size, size);
+        ctx.fillRect(x, y, size, size); // vykresleni 
+    }
+});
+
+canvas.addEventListener('mousedown', function activate() {
+    painting = true;
+    if (tool == 1) {
+        writing.play();
+        writing.loop = true; // po dokonceni prehravani zacne hrat znovu
+    }
+    else {
+        erasing.play();
+        erasing.loop = true;
     }
 }
+);
 
-function activate() {
-    painting = true;
-}
-
-function deactivate() {
+canvas.addEventListener('mouseup', function deactivate() {
     painting = false;
-}
+    writing.pause(); // pozastaveni prehravani
+    erasing.pause();
+});
 
-function eraser() {
-    color = "#FFFFFF"; // barva gumy se nastavi jako bila pro efekt mazani
-    document.getElementById("canvas").style.cursor = "url('../paint/images/eraser-cursor.png'), default"; // zmena kursoru
-}
-
-function pen() {
+pen.addEventListener('click', function pen() {
+    tool = 1;
     color = "#000000" // zakladni barva pera se nastavi na cernou
     document.getElementById("canvas").style.cursor = "url('../paint/images/pencil-cursor.gif'), default"; // zmena kursoru
     color = document.getElementById("colors").value; // prirazeni barvy
-    document.getElementById("colors").removeAttribute("disabled");
-}
+});
+
+eraser.addEventListener('click', function eraser() {
+    tool = 0;
+    color = "#FFFFFF"; // barva gumy se nastavi jako bila pro efekt mazani
+    document.getElementById("canvas").style.cursor = "url('../paint/images/eraser-cursor.png'), default"; // zmena kursoru
+});
 
 function changeColor(num) {
     switch (num) {
@@ -99,15 +118,15 @@ function changeColor(num) {
             color = document.getElementById("colorsInput").value;
     }
     document.getElementById("canvas").style.cursor = "url('../paint/images/pencil-cursor.gif'), default";
+    tool = 1;
     console.log(color);
 }
 
-function thickness(number) { // nastavi velikost strany na argument funkce
+function thickness(number) { // nastavi velikost strany na parametr funkce
     size = number;
 }
 
-function clearCanvas() { // funkce pro vycisteni canvasu
+button.addEventListener('click', function clearCanvas() {
     ctx = canvas.getContext('2d');
     ctx.clearRect(0, 0, canvas.width, canvas.height); // vycisteni canvasu
-}
-
+});

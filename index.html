@@ -15,23 +15,31 @@
 </head>
 
 <body>
-    <header class="jumbotron">
+
+    <audio id="writing">
+        <source src="../paint/sounds/scratching.mp3" type="audio/mpeg">
+    </audio>
+
+    <audio id="erasing">
+        <source src="../paint/sounds/erasing.mp3" type="audio/mpeg">
+    </audio>
+
+    <header class="jumbotron bg-primary text-light">
         <h1 class="text-center">Maluj o106!</h1>
     </header>
     <div class="container text-center">
         <table>
             <tr>
                 <td>
-                    <div><canvas width="1000" height="500" id="canvas" onmousemove="paint(event);"
-                            onmousedown="activate();" onmouseup="deactivate();">
+                    <div><canvas width="1000" height="500" id="canvas"></canvas>
                     </div>
                 </td>
                 <td class="tools">
-                    <a href="#" onclick="pen();"><img src="../paint/images/pencil.png" /></a>
-                    <a href="#" onclick="eraser();"><img src="../paint/images/eraser.png" /></a>
-                    <button type="button" class="btn btn-primary" id="button" onclick="clearCanvas()">Nové
+                    <a href="#" id="pen"><img src="../paint/images/pencil.png" alt="pencil" /></a>
+                    <a href="#" id="eraser"><img src="../paint/images/eraser.png" alt="eraser" /></a>
+                    <button type="button" class="btn btn-primary" id="button">Nové
                         plátno</button>
-                    <div class="dropdown" style="background-color: white;">
+                    <div class=" dropdown" style="background-color: white;">
                         <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenuButton"
                             data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             Tloušťka čáry
@@ -72,7 +80,7 @@
                     </td>
                     <td class="colors">
                         <div style="background-color: #FFF200;" onclick="changeColor(6);"></div>
-                    </td class="colors">
+                    </td>
                     <td class="colors">
                         <div style="background-color: #22B14C;" onclick="changeColor(7);"></div>
                     </td>
@@ -112,7 +120,7 @@
                     </td>
                     <td class="colors">
                         <div style="background-color: #EFE4B0;" onclick="changeColor(16);"></div>
-                    </td class="colors">
+                    </td>
                     <td class="colors">
                         <div style="background-color: #B5E61D;" onclick="changeColor(17);"></div>
                     </td>
@@ -130,7 +138,7 @@
         </div>
     </div>
     <footer class="text-center" id="footer">
-        <p>©Aleš Lahodný IT2 2020</p>
+        <p>© 2020 Aleš Lahodný, IT2</p>
     </footer>
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
