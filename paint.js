@@ -1,12 +1,13 @@
 let color = "#FFFFFF"; // zakladni barva bila (nic se nevykresluje)
 let size = 10; // velikost strany ctverce
-let sizeOfCursor = 48;
+let cursorSize = 48; // obrazek ma 48 pixelu
 let painting;
+let sound = document.getElementById("myAudio");
 function paint(event) {
     let canvas = document.getElementById("canvas");
     let ctx = canvas.getContext("2d");
     let x = event.clientX - size - 10;
-    let y = event.clientY + sizeOfCursor;
+    let y = event.clientY + cursorSize;
     if (painting) {
         ctx.fillStyle = color;
         ctx.fillRect(x, y, size, size);
