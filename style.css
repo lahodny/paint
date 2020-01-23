@@ -35,7 +35,7 @@ canvas {
   margin-top: 10px;
 }
 
-#dropdown-name {
+#my-dropdown-name {
   background-color: white;
 }
 
@@ -43,10 +43,6 @@ canvas {
   background-color: white;
   color: black;
   margin-top: 10px;
-}
-
-#dropdownMy {
-  background-color: white;
 }
 
 #footer {
