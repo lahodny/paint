@@ -26,12 +26,11 @@ canvas.addEventListener('mousedown', function activate() {
         writing.play();
         writing.loop = true; // po dokonceni prehravani zacne hrat znovu
     }
-    else {
+    else if (tool == 2) {
         erasing.play();
         erasing.loop = true;
     }
-}
-);
+});
 
 canvas.addEventListener('mouseup', function deactivate() {
     painting = false;
@@ -43,11 +42,10 @@ pen.addEventListener('click', function pen() {
     tool = 1;
     color = "#000000" // zakladni barva pera se nastavi na cernou
     document.getElementById("canvas").style.cursor = "url('../paint/images/pencil-cursor.gif'), default"; // zmena kursoru
-    color = document.getElementById("colors").value; // prirazeni barvy
 });
 
 eraser.addEventListener('click', function eraser() {
-    tool = 0;
+    tool = 2;
     color = "#FFFFFF"; // barva gumy se nastavi jako bila pro efekt mazani
     document.getElementById("canvas").style.cursor = "url('../paint/images/eraser-cursor.png'), default"; // zmena kursoru
 });
