@@ -45,3 +45,7 @@ canvas {
   bottom: 20px;
   width: 100%;
 }
+
+.item {
+  margin-top: 10px;
+}
